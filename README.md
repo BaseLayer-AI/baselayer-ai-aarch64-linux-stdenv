@@ -125,12 +125,6 @@ This is where the setup differs to accommodate the specific hardware/OS:
 
 **Conclusion:** If you were to run the same compilation command, the **Nix tools** would behave identically on both. However, the **final binary** would be different because the Darwin build is pulling from the Apple SDK, while the Linux build is pulling from standard Linux system headers.
 
-
-
-
-
-
-```
-Full llama.cpp/pi transcript:
+### Full llama.cpp/pi transcript:
 
 https://nix-ontouchstart.github.io/nix-ontouchstart-llama_cpp-sessions/2026-11-04T18-47-20-872Z_01a1a7e3-1a28-7379-97dd-290f48c91877
