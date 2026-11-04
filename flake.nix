@@ -11,27 +11,24 @@
     in {
       packages.aarch64-linux.default = host.writeTextFile { name = "readme"; executable = true; destination = "/bin/readme";
         text = ''#!${host.stdenv.shell}
-PATH=${host.coreutils}/bin
-cat ${self}/README.md
+unset PATH
+${host.coreutils}/bin/cat ${self}/README.md
         '';};
 
       packages.aarch64-linux.info = host.writeTextFile { name = "info"; executable = true; destination = "/bin/info";
         text = ''#!${host.stdenv.shell}
-PATH=${host.coreutils}/bin
-type -a echo
-type -a cat
-type -a ls
+unset PATH
 echo 'host.stdenv'
 echo ${builtins.toString host.stdenv}
-ls -lR ${builtins.toString host.stdenv}
+${host.coreutils}/bin/ls -lR ${builtins.toString host.stdenv}
 echo 'host.stdenv/setup'
-cat -n ${builtins.toString host.stdenv}/setup
+${host.coreutils}/bin/cat -n ${builtins.toString host.stdenv}/setup
 echo 'host.stdenv.shell'
 echo ${host.coreutils}
-ls -l ${host.coreutils}/bin |cat -n
-${host.coreutils}/bin/uname -a
+${host.coreutils}/bin/ls -l ${host.coreutils}/bin | ${host.coreutils}/bin/cat -n
+${host.coreutils}/bin/uname -av
 echo ${builtins.toString host.stdenv.shell}
-ls -lR ${builtins.toString host.stdenv.shell}
+${host.coreutils}/bin/ls -lR ${builtins.toString host.stdenv.shell}
 ${host.stdenv.shell} --version
 ''; };
   };
