@@ -34,6 +34,7 @@ ${host.coreutils}/bin/ls -R ${host.gnumake}
 ${host.coreutils}/bin/ls -R ${host.patch}
 ${host.coreutils}/bin/ls -R ${host.xz}
 ${host.coreutils}/bin/ls -R ${host.file}
+${host.coreutils}/bin/cat -n ${builtins.toString host.stdenv}/setup
 ''; };
   };
 }
