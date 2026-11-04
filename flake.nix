@@ -11,11 +11,16 @@
     in {
       packages.aarch64-linux.default = host.writeTextFile { name = "readme"; executable = true; destination = "/bin/readme";
         text = ''#!${host.stdenv.shell}
+PATH=${host.coreutils}/bin
 cat ${self}/README.md
         '';};
 
       packages.aarch64-linux.info = host.writeTextFile { name = "info"; executable = true; destination = "/bin/info";
         text = ''#!${host.stdenv.shell}
+PATH=${host.coreutils}/bin
+type -a echo
+type -a cat
+type -a ls
 echo 'host.stdenv'
 echo ${builtins.toString host.stdenv}
 ls -lR ${builtins.toString host.stdenv}
