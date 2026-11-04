@@ -18,18 +18,22 @@ ${host.coreutils}/bin/cat ${self}/README.md
       packages.aarch64-linux.info = host.writeTextFile { name = "info"; executable = true; destination = "/bin/info";
         text = ''#!${host.stdenv.shell}
 unset PATH
-echo 'host.stdenv'
-echo ${builtins.toString host.stdenv}
-${host.coreutils}/bin/ls -lR ${builtins.toString host.stdenv}
-echo 'host.stdenv/setup'
-${host.coreutils}/bin/cat -n ${builtins.toString host.stdenv}/setup
-echo 'host.stdenv.shell'
-echo ${host.coreutils}
-${host.coreutils}/bin/ls -l ${host.coreutils}/bin | ${host.coreutils}/bin/cat -n
-${host.coreutils}/bin/uname -av
-echo ${builtins.toString host.stdenv.shell}
-${host.coreutils}/bin/ls -lR ${builtins.toString host.stdenv.shell}
+echo ${host.stdenv.shell}
 ${host.stdenv.shell} --version
+${host.coreutils}/bin/uname -a
+${host.coreutils}/bin/ls -R ${host.coreutils}
+${host.coreutils}/bin/ls -R ${host.findutils}
+${host.coreutils}/bin/ls -R ${host.diffutils}
+${host.coreutils}/bin/ls -R ${host.gnused}
+${host.coreutils}/bin/ls -R ${host.gnugrep}
+${host.coreutils}/bin/ls -R ${host.gawk}
+${host.coreutils}/bin/ls -R ${host.gnutar}
+${host.coreutils}/bin/ls -R ${host.gzip}
+${host.coreutils}/bin/ls -R ${host.bzip2}
+${host.coreutils}/bin/ls -R ${host.gnumake}
+${host.coreutils}/bin/ls -R ${host.patch}
+${host.coreutils}/bin/ls -R ${host.xz}
+${host.coreutils}/bin/ls -R ${host.file}
 ''; };
   };
 }
